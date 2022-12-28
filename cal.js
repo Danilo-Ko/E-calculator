@@ -24,3 +24,38 @@ const onClickNumber = (number) => () => {
   document.querySelector('#num-7').addEventListener('click', onClickNumber('7'));
   document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
   document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
+
+  const onClickOperator = (op) => () => {
+    operator = op;
+    $operator.value = op;
+    if (numOne && !numTwo) {
+      $result.value = '';
+    } else if (operator == 'C') {
+      console.log('reset');
+      $operator.value = '';
+      $result.value = '';
+      numOne = operator = numTwo = '';
+    } else if (!numOne) {
+      alert('숫자를 먼저 입력하세요.');
+    }
+  }
+  
+  document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
+  document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
+  document.querySelector('#divide').addEventListener('click', onClickOperator('/'));
+  document.querySelector('#multiply').addEventListener('click', onClickOperator('*'));
+  document.querySelector('#clear').addEventListener('click', onClickOperator('C'));
+
+  if (operator == '+') {
+    $result.value = parseInt(numOne) + parseInt(numTwo);
+    console.log($result.value);
+  } else if (operator == '-') {
+    $result.value = parseInt(numOne) - parseInt(numTwo);
+    console.log($result.value);
+  } else if (operator == '*') {
+    $result.value = parseInt(numOne) * parseInt(numTwo);
+    console.log($result.value);
+  } else if (operator == '/') {
+    $result.value = parseInt(numOne) / parseInt(numTwo);
+    console.log($result.value);
+  }
