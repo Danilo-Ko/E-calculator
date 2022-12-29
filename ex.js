@@ -45,17 +45,31 @@ document
     .addEventListener('click', onClickNumber('9'));
 
 const onClickOperator = (op) => () => {
-    operator = op;
-    $operator.value = op;
     if (numOne && !numTwo) {
+        operator = op;
+        $operator.value = op;
         $result.value = '';
-    } else if (operator == 'C') {
-        $operator.value = '';
-        $result.value = '';
-        numOne = operator = numTwo = '';
     } else if (!numOne) {
         alert('먼저 숫자를 입력하세요.');
     }
+}
+
+const onClickClear = () => () =>{
+    $operator.value = '';
+    $result.value = '';
+    numOne = operator = numTwo = '';
+}
+
+const onClickCalculator = () => () => {
+if (operator =='+') {
+    $result.value = parseInt(numOne) + parseInt(numTwo);
+}else if (operator =='-') {
+    $result.value = parseInt(numOne) - parseInt(numTwo);
+}else if (operator =='*') {
+    $result.value = parseInt(numOne) * parseInt(numTwo);
+}else if (operator =='/') {
+    $result.value = parseInt(numOne) / parseInt(numTwo);
+}
 }
 
 document
@@ -70,19 +84,6 @@ document
 document
     .querySelector('#multiply')
     .addEventListener('click', onClickOperator('*'));
-document
-    .querySelector('#clear')
-    .addEventListener('click', onClickOperator(''));
-
-if (operator =='+') {
-    $result.value = parseInt(numOne) + parseInt(numTwo);
-}else if (operator =='-') {
-    $result.value = parseInt(numOne) - parseInt(numTwo);
-}else if (operator =='*') {
-    $result.value = parseInt(numOne) * parseInt(numTwo);
-}else if (operator =='/') {
-    $result.value = parseInt(numOne) / parseInt(numTwo);
-}
 
 document.querySelector('#clear').addEventListener('click', onClickClear());
 document.querySelector('#calculate').addEventListener('click', onClickCalculator());
