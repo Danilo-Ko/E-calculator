@@ -1,4 +1,19 @@
-* { box-sizing: border-box; }
-#result { width: 180px; height: 50px; margin: 5px; text-align: right; }
-#operator { width: 50px; height: 50px; margin: 5px; text-align: center; }
-button { width: 50px; height: 50px; margin: 5px; }
+button {
+    width: 50px;
+    height: 50px;
+    font-size:larger;
+}
+#operator {
+    width: 50px;
+    height: 50px;
+
+}
+#result {
+    width: 150px;
+    height: 50px;
+
+}
+.row {
+    padding: 10px;
+    gap: 5px;
+}
